@@ -1,0 +1,19 @@
+.header {
+  height: 40px;
+  background-color: rgb(49, 49, 49);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.search-form button {
+  background-color: rgb(156, 5, 5);
+  border: none;
+  border-radius: 5%;
+  color: white;
+}
+.search-form input {
+  border: none;
+  border-radius: 5%;
+  background-color: #000000ad;
+  color: white;
+}
