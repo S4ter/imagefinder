@@ -20,17 +20,18 @@
     <script type="module" src="./js/main.js"></script>
   </head>
   <body>
-    <header class="header">
-      <form class="search-form" id="search-form">
+    <div class="header">
+      <form class="search-form" id="searchForm">
+        <input hidden name="page" type="number" value="1" />
         <input
           type="text"
-          name="searchQuery"
+          name="q"
           autocomplete="off"
           placeholder="Search images..."
         />
         <button type="submit">Search</button>
       </form>
-    </header>
+    </div>
     <div class="gallery" id="gallery"></div>
   </body>
 </html>
