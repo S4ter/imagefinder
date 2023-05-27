@@ -1,6 +1,25 @@
 .gallery {
+  display: flex;
+  max-width: 1600px;
+  margin: auto;
+  flex-wrap: wrap;
+  gap: 20px;
 }
-.gallery__item {
+img {
   width: 300px;
-  height: 300px;
+  height: 200px;
+}
+.photo-card {
+  box-shadow: 0px 10px 10px -7px rgba(0, 0, 0, 1);
+  text-align: center;
+}
+.info {
+  display: flex;
+  justify-content: space-evenly;
+}
+.info-item {
+  margin: 3px 0px;
+}
+.info-item p {
+  margin: 3px 0px 5px 0px;
 }

@@ -13,9 +13,19 @@ export default async function pingAPI({ q = '', page = '1' }) {
       if (response.status === 400) {
         return [];
       }
+      if (response.status === 424) {
+        Notiflix.Notify.failure(
+          `We're sorry, but you've reached the end of search results.`
+        );
+        return [];
+      }
       return { error: response.status };
     }
-    const { hits: photos } = await response.json();
+    const data = await response.json();
+    const photos = data.hits;
+    const totalHits = data.totalHits;
+    console.log(totalHits);
+
     return photos;
   } catch (e) {
     return { error: e.toString() };

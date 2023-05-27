@@ -1,6 +1,8 @@
-import { search } from './handlers.js';
+import { infiniteScroll, search } from './handlers.js';
 
-const searchForm = document.querySelector('#searchForm');
+export const searchForm = document.querySelector('#searchForm');
 
 searchForm.addEventListener('submit', search);
 searchForm.dispatchEvent(new Event('submit'));
+
+window.addEventListener('scroll', infiniteScroll);

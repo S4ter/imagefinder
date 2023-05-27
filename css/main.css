@@ -26,9 +26,43 @@
   color: white;
 }
 
-.gallery__item {
+.gallery {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  max-width: 1600px;
+  margin: auto;
+  -ms-flex-wrap: wrap;
+      flex-wrap: wrap;
+  gap: 20px;
+}
+
+img {
   width: 300px;
-  height: 300px;
+  height: 200px;
+}
+
+.photo-card {
+  -webkit-box-shadow: 0px 10px 10px -7px rgb(0, 0, 0);
+          box-shadow: 0px 10px 10px -7px rgb(0, 0, 0);
+  text-align: center;
+}
+
+.info {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: space-evenly;
+      -ms-flex-pack: space-evenly;
+          justify-content: space-evenly;
+}
+
+.info-item {
+  margin: 3px 0px;
+}
+
+.info-item p {
+  margin: 3px 0px 5px 0px;
 }
 
 body {
