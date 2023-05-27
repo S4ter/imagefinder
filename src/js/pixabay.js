@@ -1,33 +1,39 @@
+import axios from 'axios';
 import { API_PATH, DEFAULT_PARAMS } from './config.js';
 
 export default async function pingAPI({ q = '', page = '1' }) {
   try {
-    const querystring = new URLSearchParams({
+    const params = {
       ...DEFAULT_PARAMS,
       page,
       q,
-    });
-    const response = await fetch(`${API_PATH}?${querystring}`);
+    };
+    const response = await axios.get(API_PATH, { params });
 
-    if (!response.ok) {
-      if (response.status === 400) {
-        return [];
-      }
-      if (response.status === 424) {
-        Notiflix.Notify.failure(
-          `We're sorry, but you've reached the end of search results.`
-        );
-        return [];
-      }
-      return { error: response.status };
+    if (!response.data) {
+      return [];
     }
-    const data = await response.json();
+
+    const data = response.data;
     const photos = data.hits;
     const totalHits = data.totalHits;
     console.log(totalHits);
 
     return photos;
-  } catch (e) {
-    return { error: e.toString() };
+  } catch (error) {
+    if (error.response) {
+      const { status } = error.response;
+      if (status === 400) {
+        return [];
+      }
+      if (status === 424) {
+        Notiflix.Notify.failure(
+          `We're sorry, but you've reached the end of search results.`
+        );
+        return [];
+      }
+      return { error: status };
+    }
+    return { error: error.toString() };
   }
 }
