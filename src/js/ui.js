@@ -4,6 +4,8 @@ import pingAPI from './pixabay.js';
 const getPhotoElement = photo => {
   const container = document.createElement('div');
   container.classList.add('photo-card');
+  const a = document.createElement('a');
+  a.href = photo.largeImageURL;
   const img = document.createElement('img');
   img.src = photo.webformatURL;
   img.alt = photo.tags;
@@ -47,7 +49,8 @@ const getPhotoElement = photo => {
   fetchedInfoDownloads.textContent = `${photo.downloads}`;
   infoItemDownloads.appendChild(fetchedInfoDownloads);
 
-  container.appendChild(img);
+  container.appendChild(a);
+  a.appendChild(img);
   container.appendChild(infoContainer);
   infoContainer.appendChild(infoItemLikes);
   infoContainer.appendChild(infoItemViews);
